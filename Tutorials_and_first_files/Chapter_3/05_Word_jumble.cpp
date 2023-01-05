@@ -22,6 +22,15 @@ int main()
                     {"persistent", "Keep at it"},
                     {"Jumble", "It's what the game is all about"}
             };
+    // Test word section
+    /*
+    string test_word = WORDS[0][0];
+    for (int i = 0; i<=test_word.size(); ++i)
+    {
+        cout << "Character at position " << i << " is: " << test_word[i] << endl;
+    }
+     Nothing seems wrong with this piece of code, other than the final character is the empty character
+     */
     srand(static_cast<unsigned int>(time(0)));
     int choice = (rand() % NUM_WORDS);
     string theWord = WORDS[choice][WORD];
