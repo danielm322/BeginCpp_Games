@@ -25,7 +25,7 @@ int main()
     cout << "Sending the new reference to cout:\n";
     cout << rStr << "\n\n";
 
-    // Copies a string object -- expensive  assignment
+    // Copies a string object -- expensive  assignment. This creates a copy to be stored in the new variable
     cout << "Assigning the returned reference to a string object.\n";
     string str = refToElement(inventory, 2);
     cout << "Sending the new string object to cout:\n";
@@ -45,3 +45,6 @@ string& refToElement(vector<string>& vec, int i)
 {
     return vec[i];
 }
+// Notice there is nothing in the return statement that specifies it returning a reference, as it is
+// already done in the return type declaration
+// Be careful to never return a reference to a local variable
