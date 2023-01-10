@@ -15,24 +15,24 @@ const char X = 'X';
 const char O = 'O';
 const char EMPTY = ' ';
 const char TIE = 'T';
-const char NO_ONE = 'N';;
+const char NO_ONE = 'N';
 // function prototypes
 void instructions();
-char askYesNo(string question);
-int askNumber(string question, int high, int low = 0);
+char askYesNo(const string& question);
+unsigned int askNumber(const string& question, unsigned int high, unsigned int low = 0);
 char humanPiece();
 char opponent(char piece);
 void displayBoard(const vector<char>& board);
 char winner(const vector<char>& board);
-bool isLegal(const vector<char>& board, int move);
-int humanMove(const vector<char>& board, char human);
-int computerMove(vector<char> board, char computer);
+bool isLegal(const vector<char>& board, unsigned int move);
+unsigned int humanMove(const vector<char>& board, char human);
+unsigned int computerMove(vector<char> board, char computer);
 void announceWinner(char winner, char computer, char human);
 
 // main function
 int main()
 {
-    int move;
+    unsigned int move;
     const int NUM_SQUARES = 9;
     vector<char> board(NUM_SQUARES, EMPTY);
     instructions();
@@ -68,7 +68,7 @@ void instructions()
     cout << " 6 | 7 | 8\n";
 }
 
-char askYesNo(string question)
+char askYesNo(const string& question)
 {
     char response;
     do
@@ -79,9 +79,9 @@ char askYesNo(string question)
     return response;
 }
 
-int askNumber(string question, int high, int low)
+unsigned int askNumber(const string& question, unsigned int high, unsigned int low)
 {
-    int number;
+    unsigned int number;
     do
     {
         cout << question << " (" << low << " – " << high << "):";
@@ -156,14 +156,14 @@ char winner(const vector<char>& board)
     return NO_ONE;
 }
 
-inline bool isLegal(int move, const vector<char>& board)
+inline bool isLegal(unsigned int move, const vector<char>& board)
 {
     return (board[move] == EMPTY);
 }
 
-int humanMove(const vector<char>& board, char human)
+unsigned int humanMove(const vector<char>& board, char human)
 {
-    int move = askNumber("Where will you move?", (board.size() - 1));
+    unsigned int move = askNumber("Where will you move?", (board.size() - 1));
     while (!isLegal(move, board))
     {
         cout << "That square is already occupied foolish human.\n";
@@ -173,7 +173,7 @@ int humanMove(const vector<char>& board, char human)
     return move;
 }
 
-int computerMove(vector<char> board, char computer)
+unsigned int computerMove(vector<char> board, char computer)
 {
     unsigned int move = 0;
     bool found = false;
@@ -228,11 +228,7 @@ int computerMove(vector<char> board, char computer)
 
 void announceWinner(char winner, char computer, char human)
 {
-    if (winner == computer)
-    {
-        cout << winner << "'s won!\n";
-    }
-    else if (winner == human)
+    if ((winner == computer) || (winner == human))
     {
         cout << winner << "'s won!\n";
     }
