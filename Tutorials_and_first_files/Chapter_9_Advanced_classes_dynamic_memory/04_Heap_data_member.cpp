@@ -16,7 +16,7 @@ public:
     Critter(const string& name = "", int age = 0);
     ~Critter();                   //destructor prototype
     Critter(const Critter& c);    //copy constructor prototype
-    Critter& Critter::operator=(const Critter& c);  //overloaded assignment op
+    Critter& operator=(const Critter& c);  //overloaded assignment op
     void Greet() const;
 
 private:
@@ -55,11 +55,13 @@ Critter& Critter::operator=(const Critter& c)  //overloaded assignment op def
     }
     return *this;
 }
+// The this pointer a pointer that all non-static member functions automatically have, which
+// points to the object that was used to call the function.
 
 void Critter::Greet() const
 {
     cout << "I'm " << *m_pName << " and I'm " << m_Age << " years old. ";
-    cout << "&m_pName: " << cout << &m_pName << endl;
+    cout << "&m_pName: " << &m_pName << endl;
 }
 
 void testDestructor();
