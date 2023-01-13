@@ -55,7 +55,7 @@ Critter& Critter::operator=(const Critter& c)  //overloaded assignment op def
     }
     return *this;
 }
-// The this pointer a pointer that all non-static member functions automatically have, which
+// The this pointer is a pointer that all non-static member functions automatically have, which
 // points to the object that was used to call the function.
 
 void Critter::Greet() const
